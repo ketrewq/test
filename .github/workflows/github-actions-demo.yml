@@ -3,6 +3,18 @@ name: Python
 on: workflow_dispatch
 
 jobs:
+  artifact:
+    name: Artifact test for the first time 
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > simple-maths.txt
+      - name: Upload simple math result
+        uses: actions/upload-artifact@v1
+        with:
+          name: math
+          path: simple-maths.txt
   build:
 
     runs-on: ubuntu-latest
